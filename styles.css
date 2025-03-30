@@ -1,0 +1,94 @@
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/* Variables */
+:root {
+  --beige: #efecd6;
+  --dark-beige: #e2d59b;
+  --salmon: #ecccad;
+  --black: #1d1915;
+}
+
+/* Main Container Grid Layout */
+.main-container {
+  height: 100vh;
+  background-color: var(--beige);
+  font-family: "Varela Round", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  display: grid;
+  grid-template-rows: 80px 100px 1fr 50px;
+}
+
+/* Header */
+.header {
+  align-self: center;
+  justify-self: start;
+}
+
+h1 {
+  font-size: 3rem;
+  color: var(--black);
+}
+
+/* Button Container */
+.add-book-container {
+  align-self: center;
+  justify-self: center;
+}
+
+.add-book-container button {
+  font-size: 1.5rem;
+}
+
+/* Book Container */
+.book-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.book-card {
+  height: 300px;
+  background-color: var(--salmon);
+}

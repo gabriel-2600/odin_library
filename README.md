@@ -1,4 +1,4 @@
-## Library
+# Library
 
 Dynamic Library Website made for the [Project: Library of The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-library)
 

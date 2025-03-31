@@ -14,8 +14,42 @@
       </div>
 
       <div class="add-book-container">
-        <button>Add Book</button>
+        <button class="add-book-btn" type="button">Add Book</button>
       </div>
+
+      <dialog>
+        <form action="">
+          <div>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required />
+          </div>
+
+          <div>
+            <label for="author">Author</label>
+            <input type="text" id="author" name="author" required />
+          </div>
+
+          <div>
+            <label for="pages"># of Pages:</label>
+            <input
+              type="number"
+              id="pages"
+              name="pages"
+              min="1"
+              max="10000"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="has-read">Did you read it?</label>
+            <input type="checkbox" id="has-read" />
+          </div>
+
+          <button class="submit-btn" type="submit">Add Book</button>
+          <button class="cancel-btn" type="reset">Cancel</button>
+        </form>
+      </dialog>
 
       <div class="book-container">
         <div class="book-card">
@@ -24,8 +58,6 @@
           <p>2</p>
           <p>read</p>
         </div>
-
-        <!-- <div class="book-card"></div> -->
       </div>
 
       <footer>Copyright © 2025 gabriel-2600</footer>

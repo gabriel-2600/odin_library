@@ -81,6 +81,7 @@ function display() {
     for (let i = myLibrary.length - 1; i < myLibrary.length; i++) {
       let bookCard = document.createElement("div");
       bookCard.classList.add("book-card");
+      bookCard.setAttribute("data-id", myLibrary[i].id);
 
       let titleParagraph = document.createElement("p");
       let authorParagraph = document.createElement("p");

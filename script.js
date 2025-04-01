@@ -100,9 +100,11 @@ function createBookCardDiv() {
     let hasReadToggleBtn = document.createElement("button");
     hasReadToggleBtn.classList.add("read-toggle-btn");
     if (myLibrary[i].hasRead) {
-      hasReadToggleBtn.textContent = "Read";
+      hasReadToggleBtn.textContent = "I've already read it";
+      bookCard.style.opacity = "0.5";
     } else {
-      hasReadToggleBtn.textContent = "Not Read";
+      hasReadToggleBtn.textContent = "haven't read it yet";
+      bookCard.style.opacity = "1";
     }
 
     let removeBookBtn = document.createElement("button");
@@ -151,12 +153,14 @@ bookContainer.addEventListener("click", (e) => {
     const targetBook = myLibrary.find((book) => book.id === targetID);
     if (targetBook.hasRead) {
       targetBook.hasRead = false;
+      e.target.textContent = "haven't read it yet";
 
-      e.target.textContent = "Not Read";
+      targetDiv.style.opacity = "1";
     } else {
       targetBook.hasRead = true;
+      e.target.textContent = "I've already read it";
 
-      e.target.textContent = "Read";
+      targetDiv.style.opacity = "0.5";
     }
   }
 });

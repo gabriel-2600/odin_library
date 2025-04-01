@@ -48,7 +48,7 @@ h6 {
   --beige: #efecd6;
   --dark-beige: #e2d59b;
   --wood: #563232;
-  --salmon: #ecccad;
+  --old-book: #f2dcb1;
   --black: #1d1915;
   --light-red: #ff5b61;
 }
@@ -108,7 +108,7 @@ h1 {
 
 .book-card {
   height: 250px;
-  background-color: var(--salmon);
+  background-color: var(--old-book);
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -131,8 +131,9 @@ h1 {
 
 .book-card button {
   align-self: center;
-  width: 150px;
+  min-width: 170px;
   border-radius: 15px;
+  padding: 5px;
 }
 
 .read-toggle-btn {
@@ -152,4 +153,9 @@ h1 {
   -webkit-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75) inset;
   -moz-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75) inset;
   transition: 0.2s;
+}
+
+/* Footer */
+footer {
+  text-align: center;
 }

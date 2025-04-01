@@ -18,61 +18,53 @@
       </div>
 
       <dialog>
-        <h2>Add Book</h2>
-        <form action="">
-          <div>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              placeholder="Title"
-              required
-            />
-          </div>
+        <div class="dialog-content">
+          <h2>Add Book</h2>
+          <form action="">
+            <div>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Title"
+                required
+              />
+            </div>
 
-          <div>
-            <input
-              type="text"
-              id="author"
-              name="author"
-              placeholder="Author"
-              required
-            />
-          </div>
+            <div>
+              <input
+                type="text"
+                id="author"
+                name="author"
+                placeholder="Author"
+                required
+              />
+            </div>
 
-          <div>
-            <input
-              type="number"
-              id="pages"
-              name="pages"
-              placeholder="# of Pages"
-              min="1"
-              max="10000"
-              required
-            />
-          </div>
+            <div>
+              <input
+                type="number"
+                id="pages"
+                name="pages"
+                placeholder="# of Pages"
+                min="1"
+                max="10000"
+                required
+              />
+            </div>
 
-          <div>
-            <label for="has-read">Did you read it?</label>
-            <input type="checkbox" id="has-read" />
-          </div>
+            <div>
+              <label for="has-read">Did you read it?</label>
+              <input type="checkbox" id="has-read" />
+            </div>
 
-          <button class="submit-btn" type="submit">Add Book</button>
-          <button class="cancel-btn" type="reset">Cancel</button>
-        </form>
+            <button class="submit-btn" type="submit">Add Book</button>
+            <button class="cancel-btn" type="reset">Cancel</button>
+          </form>
+        </div>
       </dialog>
 
-      <div class="book-container">
-        <div class="book-card" data-id="1229df97-4f26-4b04-ba3b-9fcd6226d553">
-          <h3>"test"</h3>
-          <p>test</p>
-          <p>123</p>
-          <button class="read-toggle-btn">Read</button>
-          <button class="remove-book-btn">Remove</button>
-        </div>
-      </div>
-
-      <footer>Copyright © 2025 gabriel-2600</footer>
+      <div class="book-container"></div>
     </div>
 
     <script src="script.js"></script>

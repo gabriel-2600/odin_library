@@ -24,16 +24,6 @@ select {
   font: inherit;
 }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
-}
-
 h1,
 h2,
 h3,
@@ -45,12 +35,14 @@ h6 {
 
 /* Variables */
 :root {
+  --light-beige: #f6f4e8;
   --beige: #efecd6;
   --dark-beige: #e2d59b;
   --wood: #563232;
   --old-book: #f2dcb1;
   --black: #1d1915;
   --light-red: #ff5b61;
+  --light-green: #5ced73;
 }
 
 /* Main Container Grid Layout */
@@ -60,15 +52,20 @@ h6 {
   font-family: "Varela Round", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
   display: grid;
-  grid-template-rows: 80px 100px 1fr 50px;
-
-  padding: 0 200px;
+  grid-template-rows: 80px 100px 1fr;
 }
 
 /* Header */
 .header {
   align-self: center;
   justify-self: start;
+  background-color: var(--light-beige);
+  width: 100%;
+  padding: 0 200px;
+
+  box-shadow: 0px 6px 14px -8px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 6px 14px -8px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 6px 14px -8px rgba(0, 0, 0, 0.75);
 }
 
 h1 {
@@ -99,11 +96,78 @@ h1 {
   transition: 0.1s;
 }
 
+/* Dialog */
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--wood);
+  border-radius: 20px;
+  padding: 0;
+
+  background-color: var(--beige);
+}
+
+.dialog-content {
+  height: 350px;
+  width: 350px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dialog-content form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+form input[type="text"],
+form input[type="number"] {
+  width: 300px;
+}
+
+form .submit-btn,
+form .cancel-btn {
+  width: 150px;
+  border: 0;
+  border-radius: 10px;
+  padding: 5px;
+  transition: 0.1s;
+}
+
+form .submit-btn {
+  background-color: var(--light-green);
+}
+form .cancel-btn {
+  background-color: var(--light-red);
+}
+
+form .submit-btn:hover,
+form .cancel-btn:hover {
+  cursor: pointer;
+  padding: 10px;
+  transition: 0.1s;
+  font-size: 1.1rem;
+}
+
 /* Book Container */
 .book-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  gap: 40px;
+  padding: 0 200px;
 }
 
 .book-card {
@@ -122,11 +186,18 @@ h1 {
 
 .book-card h3 {
   font-size: 1.5rem;
-  align-self: center;
+  text-align: center;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .book-card p {
   font-size: 1.2rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .book-card button {
@@ -153,9 +224,4 @@ h1 {
   -webkit-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75) inset;
   -moz-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75) inset;
   transition: 0.2s;
-}
-
-/* Footer */
-footer {
-  text-align: center;
 }

@@ -47,18 +47,22 @@ h6 {
 :root {
   --beige: #efecd6;
   --dark-beige: #e2d59b;
+  --wood: #563232;
   --salmon: #ecccad;
   --black: #1d1915;
+  --light-red: #ff5b61;
 }
 
 /* Main Container Grid Layout */
 .main-container {
-  height: 100vh;
+  min-height: 100vh;
   background-color: var(--beige);
   font-family: "Varela Round", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
   display: grid;
   grid-template-rows: 80px 100px 1fr 50px;
+
+  padding: 0 200px;
 }
 
 /* Header */
@@ -80,15 +84,72 @@ h1 {
 
 .add-book-container button {
   font-size: 1.5rem;
+  border: 0;
+  background-color: var(--wood);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  transition: 0.1s;
+}
+
+.add-book-container button:hover {
+  cursor: pointer;
+  padding: 7px 12px;
+  font-size: 1.6rem;
+  transition: 0.1s;
 }
 
 /* Book Container */
 .book-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
 }
 
 .book-card {
-  height: 300px;
+  height: 250px;
   background-color: var(--salmon);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 15px;
+
+  box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75);
+}
+
+.book-card h3 {
+  font-size: 1.5rem;
+  align-self: center;
+}
+
+.book-card p {
+  font-size: 1.2rem;
+}
+
+.book-card button {
+  align-self: center;
+  width: 150px;
+  border-radius: 15px;
+}
+
+.read-toggle-btn {
+  background-color: var(--dark-beige);
+  border: 1px solid var(--wood);
+}
+
+.remove-book-btn {
+  background-color: var(--light-red);
+  border: 1px solid var(--wood);
+}
+
+.book-card button:hover {
+  cursor: pointer;
+
+  box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75) inset;
+  -webkit-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75) inset;
+  -moz-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75) inset;
+  transition: 0.2s;
 }

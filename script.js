@@ -41,12 +41,13 @@ function addBookToLibrary(id, title, author, pages, hasRead) {
  * Buttons to show/close the form modal
  */
 const dialog = document.querySelector("dialog");
-
+// show form modal
 const addBookBtn = document.querySelector(".add-book-btn");
 addBookBtn.addEventListener("click", () => {
   dialog.showModal();
 });
 
+// close form modal
 const cancelBtn = document.querySelector(".cancel-btn");
 cancelBtn.addEventListener("click", (e) => {
   dialog.close();
@@ -93,8 +94,8 @@ function createBookCardDiv() {
     let pagesParagraph = document.createElement("p");
 
     titleParagraph.textContent = `"${myLibrary[i].title}"`;
-    authorParagraph.textContent = `${myLibrary[i].author}`;
-    pagesParagraph.textContent = `${myLibrary[i].pages}`;
+    authorParagraph.textContent = `Author: ${myLibrary[i].author}`;
+    pagesParagraph.textContent = `# of pages: ${myLibrary[i].pages}`;
 
     let hasReadToggleBtn = document.createElement("button");
     hasReadToggleBtn.classList.add("read-toggle-btn");
@@ -106,7 +107,7 @@ function createBookCardDiv() {
 
     let removeBookBtn = document.createElement("button");
     removeBookBtn.classList.add("remove-book-btn");
-    removeBookBtn.textContent = "X";
+    removeBookBtn.textContent = "Remove";
 
     bookCard.appendChild(titleParagraph);
     bookCard.appendChild(authorParagraph);
@@ -128,16 +129,34 @@ function display(bookCard) {
   bookContainer.appendChild(bookCard);
 }
 
+/**
+ * Event Listener for the bookContainer
+ * */
 bookContainer.addEventListener("click", (e) => {
-  if (e.target.classList.contains("remove-book-btn")) {
-    let targetDiv = e.target.parentElement;
-    let targetID = targetDiv.dataset.id;
+  const targetDiv = e.target.parentElement;
+  const targetID = targetDiv.dataset.id;
 
+  // Deletes a specified element in the myLibrary Array and remove the div
+  if (e.target.classList.contains("remove-book-btn")) {
     for (let i = 0; i < myLibrary.length; i++) {
       if (targetID === myLibrary[i].id) {
         myLibrary.splice(i, 1);
         targetDiv.remove();
       }
+    }
+  }
+
+  // Toggles read or not read button for the specified element
+  if (e.target.classList.contains("read-toggle-btn")) {
+    const targetBook = myLibrary.find((book) => book.id === targetID);
+    if (targetBook.hasRead) {
+      targetBook.hasRead = false;
+
+      e.target.textContent = "Not Read";
+    } else {
+      targetBook.hasRead = true;
+
+      e.target.textContent = "Read";
     }
   }
 });

@@ -37,6 +37,9 @@ function addBookToLibrary(id, title, author, pages, hasRead) {
   myLibrary.push(book);
 }
 
+/**
+ * Buttons to show/close the form modal
+ */
 const dialog = document.querySelector("dialog");
 
 const addBookBtn = document.querySelector(".add-book-btn");
@@ -49,6 +52,9 @@ cancelBtn.addEventListener("click", (e) => {
   dialog.close();
 });
 
+/**
+ * Submit button in form modal
+ * */
 const form = document.querySelector("form");
 
 const titleInputField = document.querySelector("#title");
@@ -67,45 +73,71 @@ form.addEventListener("submit", (e) => {
     hasReadInputField.checked
   );
 
+  display(createBookCardDiv());
+
   cancelBtn.click();
-  display();
 });
 
 /**
- * Display the latest book object stored in the myLibrary array
+ * Create a book-card div for the latest element in myLibrary array
+ * @returns {HTMLDivElement}
+ * */
+function createBookCardDiv() {
+  let bookCard = document.createElement("div");
+  for (let i = myLibrary.length - 1; i < myLibrary.length; i++) {
+    bookCard.classList.add("book-card");
+    bookCard.setAttribute("data-id", myLibrary[i].id);
+
+    let titleParagraph = document.createElement("h3");
+    let authorParagraph = document.createElement("p");
+    let pagesParagraph = document.createElement("p");
+
+    titleParagraph.textContent = `"${myLibrary[i].title}"`;
+    authorParagraph.textContent = `${myLibrary[i].author}`;
+    pagesParagraph.textContent = `${myLibrary[i].pages}`;
+
+    let hasReadToggleBtn = document.createElement("button");
+    hasReadToggleBtn.classList.add("read-toggle-btn");
+    if (myLibrary[i].hasRead) {
+      hasReadToggleBtn.textContent = "Read";
+    } else {
+      hasReadToggleBtn.textContent = "Not Read";
+    }
+
+    let removeBookBtn = document.createElement("button");
+    removeBookBtn.classList.add("remove-book-btn");
+    removeBookBtn.textContent = "X";
+
+    bookCard.appendChild(titleParagraph);
+    bookCard.appendChild(authorParagraph);
+    bookCard.appendChild(pagesParagraph);
+    bookCard.appendChild(hasReadToggleBtn);
+    bookCard.appendChild(removeBookBtn);
+  }
+
+  return bookCard;
+}
+
+/**
+ * Appends the bookCard div to the bookContainer
+ * @param {HTMLDivElement} bookcard
  * @returns {void}
  */
 const bookContainer = document.querySelector(".book-container");
-function display() {
-  if (myLibrary.length !== 0) {
-    for (let i = myLibrary.length - 1; i < myLibrary.length; i++) {
-      let bookCard = document.createElement("div");
-      bookCard.classList.add("book-card");
-      bookCard.setAttribute("data-id", myLibrary[i].id);
-
-      let titleParagraph = document.createElement("p");
-      let authorParagraph = document.createElement("p");
-      let pagesParagraph = document.createElement("p");
-      let hasReadParagraph = document.createElement("p");
-
-      let titleTextNode = document.createTextNode(myLibrary[i].title);
-      let authorTextNode = document.createTextNode(myLibrary[i].author);
-      let pagesTextNode = document.createTextNode(myLibrary[i].pages);
-      let hasReadTextNode = document.createTextNode(myLibrary[i].hasRead);
-
-      titleParagraph.appendChild(titleTextNode);
-      authorParagraph.appendChild(authorTextNode);
-      pagesParagraph.appendChild(pagesTextNode);
-      hasReadParagraph.appendChild(hasReadTextNode);
-
-      bookCard.appendChild(titleParagraph);
-      bookCard.appendChild(authorParagraph);
-      bookCard.appendChild(pagesParagraph);
-      bookCard.appendChild(hasReadParagraph);
-
-      bookContainer.appendChild(bookCard);
-    }
-  }
+function display(bookCard) {
+  bookContainer.appendChild(bookCard);
 }
 
-display();
+bookContainer.addEventListener("click", (e) => {
+  if (e.target.classList.contains("remove-book-btn")) {
+    let targetDiv = e.target.parentElement;
+    let targetID = targetDiv.dataset.id;
+
+    for (let i = 0; i < myLibrary.length; i++) {
+      if (targetID === myLibrary[i].id) {
+        myLibrary.splice(i, 1);
+        targetDiv.remove();
+      }
+    }
+  }
+});

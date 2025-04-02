@@ -17,5 +17,6 @@ Tools used:
 - Github
 
 Lessons Learned:
+Applied Objects and Object Constructors in JavaScript to organize data.
 
 Credits (The images/icons used are owned by there rightful authors):

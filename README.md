@@ -2,7 +2,7 @@
 
 Dynamic Library Website made for the [Project: Library of The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-library)
 
-Live Preview:
+Live Preview: https://gabriel-2600.github.io/odin_library/
 
 Built With:
 
@@ -17,6 +17,7 @@ Tools used:
 - Github
 
 Lessons Learned:
-Applied Objects and Object Constructors in JavaScript to organize data.
+
+- Applied Objects and Object Constructors in JavaScript to organize data.
 
 Credits (The images/icons used are owned by there rightful authors):
